@@ -28,7 +28,7 @@ def check_bound(obj_rct: pg.Rect) -> tuple[bool, bool]:
         tate = False
     return yoko, tate
 
-def GameOver(screen):
+def Game_Over(screen):
     shadow_s = pg.Surface((WIDTH, HEIGHT))
     pg.draw.rect(shadow_s, (0,0,0), (0,0,WIDTH,HEIGHT))
     shadow_s.set_alpha(125)
@@ -39,6 +39,7 @@ def GameOver(screen):
     screen.blit(kk8_img, [WIDTH/2-100, HEIGHT/2-400])
     screen.blit(txt, [400, 300])
     pg.display.update()
+    time.sleep(5)
 
 
 def main():
@@ -66,9 +67,7 @@ def main():
         if kk_rct.colliderect(bb_rct):
             # こうかとんと爆弾が重なっていたら
             print("GameOver")
-            GameOver(screen)
-            time.sleep(5)
-            return
+            return Game_Over(screen)
         
 
         key_lst = pg.key.get_pressed()
